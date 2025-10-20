@@ -19,7 +19,6 @@
   "action": {
     "default_title": "PreviewTube"
   },
-  "options_page": "options.html",
   "web_accessible_resources": [
     {
       "resources": ["content.js"],
