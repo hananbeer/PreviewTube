@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>PreviewTube Options</title>
+    <style>
+      body { font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 24px; }
+      label { display:block; font-weight:600; margin:16px 0 8px; }
+      textarea, input[type="text"] { width: 600px; max-width: 100%; font: 13px/1.5 monospace; }
+      .row { margin-bottom: 16px; }
+      .muted { color: #666; font-size: 12px; }
+      button { padding: 8px 12px; }
+      .ok { color: #0a0; }
+      .err { color: #a00; }
+    </style>
+  </head>
+  <body>
+    <h1>PreviewTube Options</h1>
+    <div class="row">
+      <label for="listenUrlPatterns">Listen URL patterns (one per line)</label>
+      <textarea id="listenUrlPatterns" rows="6" placeholder="*://www.googleapis.com/youtube/*\n*://api.example.com/*"></textarea>
+      <div class="muted">Use match patterns, e.g. <code>*://domain/path/*</code></div>
+    </div>
+    <div class="row">
+      <label for="injectDomains">Inject domains (one per line)</label>
+      <textarea id="injectDomains" rows="4" placeholder="example.com\nyoutube.com"></textarea>
+    </div>
+    <div class="row">
+      <button id="save">Save</button>
+      <span id="status" class="muted"></span>
+    </div>
+
+    <script>
+      const DEFAULTS = {
+        listenUrlPatterns: ["*://www.googleapis.com/youtube/*"],
+        injectDomains: ["example.com"]
+      };
+      function getFormValues() {
+        const parseLines = (value) => value.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+        return {
+          listenUrlPatterns: parseLines(document.getElementById('listenUrlPatterns').value),
+          injectDomains: parseLines(document.getElementById('injectDomains').value)
+        };
+      }
+      function setFormValues(values) {
+        document.getElementById('listenUrlPatterns').value = (values.listenUrlPatterns || DEFAULTS.listenUrlPatterns).join('\n');
+        document.getElementById('injectDomains').value = (values.injectDomains || DEFAULTS.injectDomains).join('\n');
+      }
+      function setStatus(text, ok=true) {
+        const el = document.getElementById('status');
+        el.textContent = text;
+        el.className = ok ? 'muted ok' : 'muted err';
+        setTimeout(() => { el.textContent=''; el.className='muted'; }, 1600);
+      }
+      document.getElementById('save').addEventListener('click', () => {
+        const values = getFormValues();
+        chrome.storage.local.set(values, () => setStatus('Saved', true));
+      });
+      // Load
+      chrome.storage.local.get(DEFAULTS, (items) => setFormValues(items));
+    </script>
+  </body>
+  </html>
+
+

@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "PreviewTube Helper",
+  "version": "1.0.0",
+  "description": "Listens to HTTP responses from specific URLs and injects JS on specific domains.",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "PreviewTube"
+  },
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["content.js"],
+      "matches": ["https://www.youtube.com/*"]
+    }
+  ]
+}
+
