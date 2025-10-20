@@ -4,10 +4,16 @@
   function injectStyle() {
     let style = document.createElement('style')
     style.textContent = `
+      #content {
+        flex-direction: row;
+        justify-content: space-between !important;
+      }
+
       [data-transcript] {
         z-index: 99999;
         font-size: 16px;
         width: 100%;
+        height: 300px;
         overflow: hidden;
         line-height: 1.0;
         font-weight: 500;
@@ -63,7 +69,7 @@
 
     let el = document.createElement('div')
     el.setAttribute('data-transcript', 'true')
-    el.textContent = text.slice(0, 300) //'Loading...'
+    el.textContent = text.slice(0, 500) //'Loading...'
     parent.appendChild(el)
   }
 
@@ -98,7 +104,7 @@
 
   function youtubeTranscriptToSimpleTranscript(transcript) {
     let parts = transcript.events
-      .map(ev => ev.segs ? ev.segs.map(seg => seg.utf8).join('\n') : '')
+      .map(ev => ev.segs ? ev.segs.map(seg => seg.utf8).join('') : '')
 
     return parts.join('\n\n').trim()
   }
