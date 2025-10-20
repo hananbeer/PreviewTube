@@ -1,8 +1,47 @@
-// Runs on matched domains defined in manifest.json content_scripts.matches
 (() => {
-  console.log('injected')
-
   let transcripts = {}
+
+  function injectStyle() {
+    let style = document.createElement('style')
+    style.textContent = `
+      [data-transcript] {
+        z-index: 99999;
+        font-size: 16px;
+        width: 100%;
+        overflow: hidden;
+        line-height: 1.0;
+        font-weight: 500;
+        white-space: break-spaces;
+
+        /* light mode */
+        /*
+        color: white;
+        background-color: rgba(0, 0, 0, 0.9);
+        text-shadow: red 2px 2px 5px;
+        */
+
+        /* dark mode */
+        color: black;
+        background-color: rgba(255, 255, 255, 0.9);
+        text-shadow: orange 2px 2px 5px;
+
+        /* on top of thumbnail */
+        /*
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 72%;
+        background-color: #ffffffa0;
+        */
+      }
+    `
+
+    document.head.appendChild(style)
+  }
+
+  injectStyle()
 
   function getVideoId(url) {
     const urlObj = new URL(url)
@@ -11,6 +50,7 @@
 
   function getThumbnailElement(videoId) {
     let thumbnail = document.querySelector(`a[href*="/watch?v=${videoId}"]`).closest('div[id="content"]')
+    thumbnail.style.flexDirection = 'column'
     return thumbnail
   }
 
@@ -23,19 +63,6 @@
 
     let el = document.createElement('div')
     el.setAttribute('data-transcript', 'true')
-    el.style.cssText = `
-        position: absolute;
-        z-index: 99999;
-        font-size: 24px;
-        color: black;
-        background-color: #ffffff80;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        overflow: hidden;
-    `
     el.textContent = text.slice(0, 300) //'Loading...'
     parent.appendChild(el)
   }
@@ -73,7 +100,7 @@
     let parts = transcript.events
       .map(ev => ev.segs ? ev.segs.map(seg => seg.utf8).join('\n') : '')
 
-    return parts.join('\n\n')
+    return parts.join('\n\n').trim()
   }
 
   setTimeout(() => {
