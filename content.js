@@ -10,7 +10,6 @@
       }
 
       [data-transcript] {
-        z-index: 99999;
         font-size: 16px;
         width: 100%;
         height: 300px;
@@ -20,20 +19,20 @@
         white-space: break-spaces;
 
         /* light mode */
-        /*
+        
         color: white;
         background-color: rgba(0, 0, 0, 0.9);
         text-shadow: red 2px 2px 5px;
-        */
-
+        
         /* dark mode */
-        color: black;
+        /*color: black;
         background-color: rgba(255, 255, 255, 0.9);
         text-shadow: orange 2px 2px 5px;
-
+*/
         /* on top of thumbnail */
         /*
         pointer-events: none;
+        z-index: 99999;
         position: absolute;
         top: 0;
         left: 0;
