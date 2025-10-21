@@ -2,15 +2,12 @@
   "manifest_version": 3,
   "name": "PreviewTube Helper",
   "version": "1.0.0",
-  "description": "Listens to HTTP responses from specific URLs and injects JS on specific domains.",
+  "description": "Preview YouTube video transcripts before entering the video",
   "permissions": [
-    "webRequest",
-    "webRequestBlocking",
-    "storage",
     "scripting"
   ],
   "host_permissions": [
-    "*://*/*"
+    "https://www.youtube.com/*"
   ],
   "background": {
     "service_worker": "background.js",
@@ -24,6 +21,9 @@
       "resources": ["content.js"],
       "matches": ["https://www.youtube.com/*"]
     }
-  ]
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  }
 }
 
