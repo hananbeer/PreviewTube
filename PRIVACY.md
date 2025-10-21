@@ -1,6 +1,6 @@
 # Privacy Policy for PreviewTube Helper
 
-**Last Updated:** December 2024
+**Last Updated:** October 2025
 
 ## Overview
 
