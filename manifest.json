@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "PreviewTube Helper",
+  "name": "PreviewTube",
   "version": "1.0.0",
   "description": "Preview YouTube video transcripts before entering the video",
   "permissions": [

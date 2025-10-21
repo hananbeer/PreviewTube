@@ -1,10 +1,10 @@
-# Privacy Policy for PreviewTube Helper
+# Privacy Policy for PreviewTube
 
 **Last Updated:** October 2025
 
 ## Overview
 
-PreviewTube Helper is a browser extension designed to enhance your YouTube browsing experience by displaying video transcripts as previews. This extension is built with privacy as a core principle and collects absolutely no personal information.
+PreviewTube is a browser extension designed to enhance your YouTube browsing experience by displaying video transcripts as previews. This extension is built with privacy as a core principle and collects absolutely no personal information.
 
 ## Data Collection
 
@@ -19,7 +19,7 @@ PreviewTube Helper is a browser extension designed to enhance your YouTube brows
 
 ## How the Extension Works
 
-PreviewTube Helper operates entirely locally on your device:
+PreviewTube operates entirely locally on your device:
 
 1. **Local Operation Only**: The extension runs entirely within your browser and only modifies the display of YouTube pages you visit
 2. **No External Communication**: The extension does not communicate with any external servers or services
@@ -53,7 +53,7 @@ If you have any questions about this privacy policy or the extension's privacy p
 
 ## Summary
 
-PreviewTube Helper is a completely private extension that enhances your YouTube experience without compromising your privacy in any way. It operates locally, collects no data, and maintains your privacy by design.
+PreviewTube is a completely private extension that enhances your YouTube experience without compromising your privacy in any way. It operates locally, collects no data, and maintains your privacy by design.
 
 ---
 
