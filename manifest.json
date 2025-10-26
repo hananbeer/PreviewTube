@@ -14,7 +14,13 @@
     "type": "module"
   },
   "action": {
-    "default_title": "PreviewTube"
+    "default_title": "PreviewTube",
+    "default_icon": {
+      "128": "img/logo128.png"
+    }
+  },
+  "icons": {
+    "128": "img/logo128.png"
   },
   "web_accessible_resources": [
     {
